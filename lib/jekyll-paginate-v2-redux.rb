@@ -5,28 +5,28 @@
 # supported on Jekyll versions < 3.0 (although it might work)
 #
 # Author: Sverrir Sigmundarson
-# Site: https://github.com/sverrirs/jekyll-paginate-v2
+# Site: https://github.com/andrewbents/jekyll-paginate-v2-redux
 # Distributed Under The MIT License (MIT) as described in the LICENSE file
 #   - https://opensource.org/licenses/MIT
 
-require "jekyll-paginate-v2/version"
+require "jekyll-paginate-v2-redux/version"
 # Files needed for the pagination generator
-require "jekyll-paginate-v2/generator/defaults"
-require "jekyll-paginate-v2/generator/compatibilityUtils"
-require "jekyll-paginate-v2/generator/utils"
-require "jekyll-paginate-v2/generator/paginationIndexer"
-require "jekyll-paginate-v2/generator/paginator"
-require "jekyll-paginate-v2/generator/paginationPage"
-require "jekyll-paginate-v2/generator/paginationModel"
-require "jekyll-paginate-v2/generator/paginationGenerator"
+require "jekyll-paginate-v2-redux/generator/defaults"
+require "jekyll-paginate-v2-redux/generator/compatibilityUtils"
+require "jekyll-paginate-v2-redux/generator/utils"
+require "jekyll-paginate-v2-redux/generator/paginationIndexer"
+require "jekyll-paginate-v2-redux/generator/paginator"
+require "jekyll-paginate-v2-redux/generator/paginationPage"
+require "jekyll-paginate-v2-redux/generator/paginationModel"
+require "jekyll-paginate-v2-redux/generator/paginationGenerator"
 # Files needed for the auto category and tag pages
-require "jekyll-paginate-v2/autopages/utils"
-require "jekyll-paginate-v2/autopages/defaults"
-require "jekyll-paginate-v2/autopages/autoPages"
-require "jekyll-paginate-v2/autopages/pages/baseAutoPage"
-require "jekyll-paginate-v2/autopages/pages/categoryAutoPage"
-require "jekyll-paginate-v2/autopages/pages/collectionAutoPage"
-require "jekyll-paginate-v2/autopages/pages/tagAutoPage"
+require "jekyll-paginate-v2-redux/autopages/utils"
+require "jekyll-paginate-v2-redux/autopages/defaults"
+require "jekyll-paginate-v2-redux/autopages/autoPages"
+require "jekyll-paginate-v2-redux/autopages/pages/baseAutoPage"
+require "jekyll-paginate-v2-redux/autopages/pages/categoryAutoPage"
+require "jekyll-paginate-v2-redux/autopages/pages/collectionAutoPage"
+require "jekyll-paginate-v2-redux/autopages/pages/tagAutoPage"
 
 module Jekyll 
   module PaginateV2
