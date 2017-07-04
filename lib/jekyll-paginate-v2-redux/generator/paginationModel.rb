@@ -53,11 +53,23 @@ module Jekyll
 
               # Request all documents in all collections that the user has requested 
               all_posts = self.get_docs_in_collections(template_config['collection'])
+              if template.data['pagination']['exclude_category']
+                all_posts = all_posts.select { |post|
+                  categories = post.data['categories']
+                  if categories.is_a?(String)
+                    categories = categories.split(/;|,|\s/)
+                  end
+                  exclude_category = template.data['pagination']['exclude_category']
+                  !categories.include? template.data['pagination']['exclude_category']
+                }
+              end
 
               # Create the necessary indexes for the posts
               all_categories = PaginationIndexer.index_posts_by(all_posts, 'categories')
               all_categories['posts'] = all_posts; # Populate a category for all posts (this is here for backward compatibility, do not use this as it will be decommissioned 2018-01-01) 
                                                   # (this is a default and must not be used in the category system)
+              # Jekyll.logger.info all_categories['posts'][0].data
+              # Jekyll.logger.info template.data['pagination']
               all_tags = PaginationIndexer.index_posts_by(all_posts, 'tags')
               all_locales = PaginationIndexer.index_posts_by(all_posts, 'locale')
 
@@ -356,3 +368,4 @@ module Jekyll
 
   end # module PaginateV2
 end # module Jekyll
+
