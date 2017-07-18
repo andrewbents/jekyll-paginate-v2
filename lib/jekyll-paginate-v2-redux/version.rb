@@ -1,8 +1,8 @@
 module Jekyll
   module PaginateV2
-    VERSION = "1.7.7"
+    VERSION = "1.7.8"
     # When modifying remember to issue a new tag command in git before committing, then push the new tag
-    #   git tag -a v1.7.7 -m "Gem v1.7.7"
+    #   git tag -a v1.7.8 -m "Gem v1.7.8"
     #   git push origin --tags
     # Yanking a published Gem
     #   gem yank jekyll-paginate-v2 -v VERSION

@@ -53,14 +53,19 @@ module Jekyll
 
               # Request all documents in all collections that the user has requested 
               all_posts = self.get_docs_in_collections(template_config['collection'])
-              if template.data['pagination']['exclude_category']
+
+              exclude_category = self.array_from_config_string template.data['pagination']['exclude_category']
+              exclude_category_global = self.array_from_config_string default_config['exclude_category']
+              exclude_category = exclude_category.concat(exclude_category_global)
+
+              if exclude_category
                 all_posts = all_posts.select { |post|
                   categories = post.data['categories']
                   if categories.is_a?(String)
                     categories = categories.split(/;|,|\s/)
                   end
-                  exclude_category = template.data['pagination']['exclude_category']
-                  !categories.include? template.data['pagination']['exclude_category']
+                  exclude_category = exclude_category
+                  !(categories.any? { |i| exclude_category.include? i })
                 }
               end
 
@@ -85,6 +90,13 @@ module Jekyll
         return templates.size.to_i
       end # function run
 
+      def array_from_config_string(config_string)
+        if config_string and config_string.is_a?(String)
+          config_string.split(/;|,|\s/)
+        else
+          []
+        end
+      end
       #
       # This function is here to retain the old compatability logic with the jekyll-paginate gem
       # no changes should be made to this function and it should be retired and deleted after 2018-01-01
